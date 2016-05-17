@@ -9,12 +9,13 @@ function addMissing {
 
 read -p "Install favorite applications? " -n 1 INSTALL
 if [[ $INSTALL =~ ^[Yy]$ ]]; then
+	APPLICATIONS=( "gvim" "git" "vlc" "hub" "guake" "gnome-tweak-tool" "redshift-gtk" "calc" )
 	# TODO Before installation, add the repositories needed
 	sudo dnf install -qy http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-$(rpm -E %fedora).noarch.rpm http://download1.rpmfusion.org/nonfree/fedora/rpmfusion-nonfree-release-$(rpm -E %fedora).noarch.rpm
 
 	MISSING=""
 
-	for dep in "gvim" "git" "vlc" "hub" "guake" "gnome-tweak-tool" "redshift-gtk"; do
+	for dep in $APPLICATIONS; do
 		if [[ -z $(command -v $dep) ]]; then
 			addMissing $dep
 		fi
