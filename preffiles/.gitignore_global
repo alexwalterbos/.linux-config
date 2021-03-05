@@ -47,3 +47,6 @@ target/*
 build/*
 **/target/
 *.swp
+.ipynb_checkpoints/
+.idea/
+*.csv
